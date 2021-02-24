@@ -20,7 +20,6 @@ function getUser() {
         type: "GET",
         url: '/my/userinfo',
         success(res) {
-            console.log(this);
             if (res.status !== 0) return layer.msg('res.message')
             renderAvatar(res.data)
         }
