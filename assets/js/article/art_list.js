@@ -7,17 +7,17 @@ $(function () {
         cate_id: '', // 文章分类的 Id
         state: '' // 文章的发布状态
     }
-
+    
     // 定义过滤器
     template.defaults.imports.dataFormat = function (date) {
-        const dt = new Date(data)
+        const dt = new Date(date)
         let y = fn(dt.getFullYear())
         let m = fn(dt.getMonth() + 1)
         let d = fn(dt.getDate())
 
-        let h = fn(d.getHours())
-        let mm = fn(d.getMinutes())
-        let s = fn(d.getSeconds())
+        let h = fn(dt.getHours())
+        let mm = fn(dt.getMinutes())
+        let s = fn(dt.getSeconds())
         return `${y}-${m}-${d} ${h}:${mm}:${s}`
     }
 
@@ -37,6 +37,7 @@ $(function () {
                 if (res.status !== 0) {
                     return layer.msg(res.message)
                 }
+                console.log(res);
                 let html = template('tpl-table', res)
                 $('tbody').html(html)
                 renderPage(res.total)
